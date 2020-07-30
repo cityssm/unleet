@@ -1,0 +1,8 @@
+node_modules
+.atomignore
+.eslintrc.js
+.git
+.github
+.gitignore
+.npmignore
+tsconfig.json
