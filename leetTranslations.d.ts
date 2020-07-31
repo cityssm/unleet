@@ -1,7 +1,6 @@
 interface LeetSymbolTranslationObject {
     [symbol: string]: string[];
 }
-export declare const accentTranslations: LeetSymbolTranslationObject;
 export declare const compoundedTranslations: LeetSymbolTranslationObject;
 export declare const fractionTranslations: LeetSymbolTranslationObject;
 export declare const letterSwapTranslations: LeetSymbolTranslationObject;

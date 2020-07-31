@@ -1,3 +1,4 @@
+import * as removeAccents from "remove-accents";
 import { leetSymbolTranslations } from "./leetTranslations";
 
 
@@ -59,8 +60,11 @@ const unleetRecurse = (lowerCaseLeetString: string, deleetStrings: Set<string>, 
 
 export const unleet = (leetString: string) => {
 
+  // convert to lower case
+  let cleanLeetString = leetString.toLowerCase();
+
   // remove periods
-  let cleanLeetString = leetString.replace(/\./g, " ");
+  cleanLeetString = cleanLeetString.replace(/\./g, " ");
 
   // switch underscores to hyphens
   cleanLeetString = cleanLeetString.replace(/_/g, "-");
@@ -68,5 +72,8 @@ export const unleet = (leetString: string) => {
   // remove multiple spaces
   cleanLeetString = cleanLeetString.replace(/ +/g, " ");
 
-  return Array.from(unleetRecurse(cleanLeetString.toLowerCase(), new Set(), new Set()));
+  // remove accents
+  cleanLeetString = removeAccents(cleanLeetString);
+
+  return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set()));
 };

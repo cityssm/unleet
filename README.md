@@ -33,7 +33,7 @@ unleet("0rg@ni℠");
 
 ## Contributing
 
-Found some text that doesn't _unleet_?  Open an issue.
+Found some text that doesn't _unleet_ properly?  Open an issue.
 
 Pull requests with more bizarre Unicode-to-letter mappings
 are more than welcome!
