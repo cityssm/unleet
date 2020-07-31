@@ -1,6 +1,92 @@
 interface LeetSymbolTranslationObject { [symbol: string]: string[] };
 
-export const compoundedTranslations: LeetSymbolTranslationObject = {
+const advancedCompositeTranslations: LeetSymbolTranslationObject = {
+  "/-\\": ["a"],
+  "[3": ["b"],
+  "[)": ["d"],
+  "|=": ["f"],
+  "|-|": ["h"],
+  "\\": ["i", "l"],
+  "/": ["i", "l"],
+  "_|": ["j"],
+  "|<": ["k"],
+  "|_": ["l"],
+  "/\\/\\": ["m"],
+  "|\\/|": ["m"],
+  "/\\/": ["n"],
+  "|\\|": ["n"],
+  "|v": ["n"],
+  "[]": ["n"],
+  "|*": ["p"],
+  "|d": ["p"],
+  "(_,)": ["q"],
+  "/2": ["r"],
+  "'|'": ["t"],
+  "(_)": ["u"],
+  "|_|": ["u"],
+  "\\/": ["v"],
+  "|/": ["v"],
+  "\\/\\/": ["w"],
+  "\\|/": ["w"],
+  "><": ["x"]
+};
+
+const balloonTranslations: LeetSymbolTranslationObject = {
+  "Ⓐ": ["a"],
+  "ⓐ": ["a"],
+  "Ⓑ": ["b"],
+  "ⓑ": ["b"],
+  "Ⓒ": ["c"],
+  "ⓒ": ["c"],
+  "Ⓓ": ["d"],
+  "ⓓ": ["d"],
+  "Ⓔ": ["e"],
+  "ⓔ": ["e"],
+  "Ⓕ": ["f"],
+  "ⓕ": ["f"],
+  "Ⓖ": ["g"],
+  "ⓖ": ["g"],
+  "Ⓗ": ["h"],
+  "ⓗ": ["h"],
+  "Ⓘ": ["i"],
+  "ⓘ": ["i"],
+  "Ⓙ": ["j"],
+  "ⓙ": ["j"],
+  "Ⓚ": ["k"],
+  "ⓚ": ["k"],
+  "Ⓛ": ["l"],
+  "ⓛ": ["l"],
+  "Ⓜ": ["m"],
+  "ⓜ": ["m"],
+  "Ⓝ": ["n"],
+  "ⓝ": ["n"],
+  "Ⓞ": ["o"],
+  "ⓞ": ["o"],
+  "Ⓟ": ["p"],
+  "ⓟ": ["p"],
+  "Ⓠ": ["q"],
+  "ⓠ": ["q"],
+  "Ⓡ": ["r"],
+  "ⓡ": ["r"],
+  "Ⓢ": ["s"],
+  "ⓢ": ["s"],
+  "Ⓣ": ["t"],
+  "ⓣ": ["t"],
+  "Ⓤ": ["u"],
+  "ⓤ": ["u"],
+  "Ⓥ": ["v"],
+  "ⓥ": ["v"],
+  "Ⓦ": ["w"],
+  "ⓦ": ["w"],
+  "Ⓧ": ["x"],
+  "ⓧ": ["x"],
+  "Ⓨ": ["y"],
+  "ⓨ": ["y"],
+  "Ⓩ": ["z"],
+  "ⓩ": ["z"]
+};
+
+const compoundedTranslations: LeetSymbolTranslationObject = {
   "æ": ["ae"],
   "ǣ": ["ae"],
   "ǽ": ["ae"],
@@ -22,7 +108,7 @@ export const compoundedTranslations: LeetSymbolTranslationObject = {
   "ȹ": ["qp", "op", "qo"]
 };
 
-export const fractionTranslations: LeetSymbolTranslationObject = {
+const fractionTranslations: LeetSymbolTranslationObject = {
   "½": ["12"],
   "¼": ["14"],
   "¾": ["34"],
@@ -33,12 +119,12 @@ export const fractionTranslations: LeetSymbolTranslationObject = {
   "℆": ["cu"]
 };
 
-export const letterSwapTranslations: LeetSymbolTranslationObject = {
+const letterSwapTranslations: LeetSymbolTranslationObject = {
   "s": ["z"],
   "z": ["s"]
 };
 
-export const numberTranslations: LeetSymbolTranslationObject = {
+const numberTranslations: LeetSymbolTranslationObject = {
   "1": ["i", "l"],
   "2": ["z"],
   "ƻ": ["2"],
@@ -52,15 +138,17 @@ export const numberTranslations: LeetSymbolTranslationObject = {
   "0": ["o"]
 };
 
-export const punctuationTranslations: LeetSymbolTranslationObject = {
-  "!": ["i", "l"],
+const punctuationTranslations: LeetSymbolTranslationObject = {
   "@": ["a"],
-  "$": ["s"],
   "^": ["a"],
+  "#": ["h"],
+  "!": ["i", "l"],
+  "|": ["l"],
+  "$": ["s"],
   "+": ["t"]
 };
 
-export const scriptTranslations: LeetSymbolTranslationObject = {
+const scriptTranslations: LeetSymbolTranslationObject = {
   "ℬ": ["b"],
   "ℂ": ["c"],
   "ℭ": ["c"],
@@ -94,15 +182,7 @@ export const scriptTranslations: LeetSymbolTranslationObject = {
   "ℤ": ["z"]
 };
 
-export const slashTranslations: LeetSymbolTranslationObject = {
-  "\\": ["i", "l"],
-  "/": ["i", "l"],
-  "\\/\\/": ["w"],
-  "/\\/": ["n"],
-  "/\\/\\": ["m"]
-};
-
-export const smallTranslations: LeetSymbolTranslationObject = {
+const smallTranslations: LeetSymbolTranslationObject = {
   "ᴬ": ["a"],
   "ᴀ": ["a"],
   "ᵃ": ["a"],
@@ -135,6 +215,7 @@ export const smallTranslations: LeetSymbolTranslationObject = {
   "ᴴ": ["h"],
   "ᵸ": ["h"],
   "ʰ": ["h"],
+  "н": ["h"],
   "◌ͪ": ["h"],
   "ₕ": ["h"],
   "ʜ": ["h"],
@@ -154,6 +235,7 @@ export const smallTranslations: LeetSymbolTranslationObject = {
   "ᵏ": ["k"],
   "ₖ": ["k"],
   "ᴋ": ["k"],
+  "κ": ["k"],
   "ᴸ": ["l"],
   "ᶫ": ["l"],
   "ˡ": ["l"],
@@ -166,6 +248,7 @@ export const smallTranslations: LeetSymbolTranslationObject = {
   "ₘ": ["m"],
   "ᴍ": ["m"],
   "ͫ": ["m"],
+  "м": ["m"],
   "ᴺ": ["n"],
   "ᶰ": ["n"],
   "ⁿ": ["n"],
@@ -223,14 +306,14 @@ export const smallTranslations: LeetSymbolTranslationObject = {
   "ᴢ": ["z"]
 };
 
-export const superscriptTranslations: LeetSymbolTranslationObject = {
+const superscriptTranslations: LeetSymbolTranslationObject = {
   "℻": ["fax"],
   "℠": ["sm"],
   "℡": ["tel"],
   "™": ["tm"]
 };
 
-export const upsideDownInvertedTranslations: LeetSymbolTranslationObject = {
+const upsideDownInvertedTranslations: LeetSymbolTranslationObject = {
   "ɒ": ["a"],
   "ɔ": ["c"],
   "Ǝ": ["e"],
@@ -246,7 +329,7 @@ export const upsideDownInvertedTranslations: LeetSymbolTranslationObject = {
   "⅄": ["y"]
 };
 
-export const otherTranslations: LeetSymbolTranslationObject = {
+const otherTranslations: LeetSymbolTranslationObject = {
   "ɑ": ["a"],
   "α": ["a"],
   "Ƃ": ["b"],
@@ -254,15 +337,20 @@ export const otherTranslations: LeetSymbolTranslationObject = {
   "Ƅ": ["b"],
   "ƅ": ["b"],
   "β": ["b"],
+  "ς": ["c"],
   "Ɖ": ["d"],
   "Ƌ": ["d"],
   "ƌ": ["d"],
+  "δ": ["d"],
   "℮": ["e"],
   "ℇ": ["e"],
   "℈": ["e"],
   "Ɛ": ["e"],
+  "ɛ": ["e"],
+  "ε": ["e"],
   "ℨ": ["e", "z"],
   "℉": ["f"],
+  "ƒ": ["f"],
   "ℹ": ["i"],
   "Ɩ": ["i"],
   "Ɨ": ["i"],
@@ -273,34 +361,91 @@ export const otherTranslations: LeetSymbolTranslationObject = {
   "ƪ": ["l"],
   "Ω": ["n"],
   "ℿ": ["n"],
+  "η": ["n"],
   "№": ["no"],
   "ð": ["o", "d"],
+  "ο": ["o"],
   "℗": ["p"],
   "þ": ["p", "b"],
   "℘": ["p"],
+  "ρ": ["p"],
   "⅊": ["pl", "l"],
   "ℚ": ["q"],
+  "φ": ["q"],
   "℞": ["r", "px"],
   "℟": ["r"],
+  "я": ["r"],
   "ƨ": ["s", "z"],
   "ℸ": ["t"],
+  "τ": ["t"],
   "℧": ["u"],
+  "μ": ["u"],
   "℣": ["v"],
   "Ɣ": ["v", "y"],
   "γ": ["v", "y"],
-  "ℽ": ["y"]
+  "ω": ["w"],
+  "χ": ["x"],
+  "ℽ": ["y"],
+  "λ": ["y"],
+  "ζ": ["z"]
 };
+
 
 export const leetSymbolTranslations: LeetSymbolTranslationObject =
   Object.assign({},
+    advancedCompositeTranslations,
+    balloonTranslations,
     compoundedTranslations,
     fractionTranslations,
     letterSwapTranslations,
     numberTranslations,
     punctuationTranslations,
     scriptTranslations,
-    slashTranslations,
     smallTranslations,
     superscriptTranslations,
     upsideDownInvertedTranslations,
     otherTranslations);
+
+export const simpleTranslations: LeetSymbolTranslationObject = {};
+export const complexTranslations: LeetSymbolTranslationObject = {};
+
+export const leetSymbolTranslationKeys = Object.keys(leetSymbolTranslations);
+
+for (const translationKey of leetSymbolTranslationKeys) {
+
+  let isSimple =
+    translationKey.length === 1 &&
+    leetSymbolTranslations[translationKey].length === 1;
+
+  if (isSimple) {
+
+    // scan all complex keys for the character
+    for (const potentiallyComplexTranslationKey of leetSymbolTranslationKeys) {
+
+      // if another translationKey contains the character
+      if ((potentiallyComplexTranslationKey.includes(translationKey) &&
+        potentiallyComplexTranslationKey !== translationKey)) {
+
+        isSimple = false;
+        break;
+      }
+
+      const potentiallyMatchingReplacementValues =
+        leetSymbolTranslations[potentiallyComplexTranslationKey];
+
+      for (const potentialValue of potentiallyMatchingReplacementValues) {
+        if (potentialValue.includes(translationKey)) {
+
+          isSimple = false;
+          break;
+        }
+      }
+    }
+  }
+
+  if (isSimple) {
+    simpleTranslations[translationKey] = leetSymbolTranslations[translationKey];
+  } else {
+    complexTranslations[translationKey] = leetSymbolTranslations[translationKey];
+  }
+}

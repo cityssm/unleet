@@ -1,8 +1,5 @@
 import * as removeAccents from "remove-accents";
-import { leetSymbolTranslations } from "./leetTranslations";
-
-
-const leetSymbols = Object.keys(leetSymbolTranslations);
+import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./leetTranslations";
 
 
 const isLetter = (potentialLetter: string) => {
@@ -13,9 +10,9 @@ const isLetter = (potentialLetter: string) => {
 };
 
 
-export const isPotentialLeet = (potentialLeetString: string) => {
+const isPotentialLeet = (potentialLeetString: string) => {
 
-  for (const leetSymbol of leetSymbols) {
+  for (const leetSymbol of leetSymbolTranslationKeys) {
 
     if (isLetter(leetSymbol)) {
       continue;
@@ -32,10 +29,10 @@ export const isPotentialLeet = (potentialLeetString: string) => {
 
 const unleetRecurse = (lowerCaseLeetString: string, deleetStrings: Set<string>, previousStrings: Set<string>) => {
 
-  for (const leetSymbol of leetSymbols) {
+  for (const leetSymbol of Object.keys(complexTranslations)) {
     if (lowerCaseLeetString.includes(leetSymbol)) {
 
-      const translations = leetSymbolTranslations[leetSymbol];
+      const translations = complexTranslations[leetSymbol];
 
       for (const translation of translations) {
 
@@ -66,14 +63,22 @@ export const unleet = (leetString: string) => {
   // remove periods
   cleanLeetString = cleanLeetString.replace(/\./g, " ");
 
-  // switch underscores to hyphens
-  cleanLeetString = cleanLeetString.replace(/_/g, "-");
-
   // remove multiple spaces
   cleanLeetString = cleanLeetString.replace(/ +/g, " ");
 
   // remove accents
   cleanLeetString = removeAccents(cleanLeetString);
+
+  // do simple translations
+
+  for (const leetSymbol of Object.keys(simpleTranslations)) {
+
+    while (cleanLeetString.includes(leetSymbol)) {
+      cleanLeetString = cleanLeetString.replace(leetSymbol, simpleTranslations[leetSymbol][0]);
+    }
+  }
+
+  console.log("Recurse value: " + cleanLeetString);
 
   return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set()));
 };

@@ -1,8 +1,92 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.leetSymbolTranslations = exports.otherTranslations = exports.upsideDownInvertedTranslations = exports.superscriptTranslations = exports.smallTranslations = exports.slashTranslations = exports.scriptTranslations = exports.punctuationTranslations = exports.numberTranslations = exports.letterSwapTranslations = exports.fractionTranslations = exports.compoundedTranslations = void 0;
+exports.leetSymbolTranslationKeys = exports.complexTranslations = exports.simpleTranslations = exports.leetSymbolTranslations = void 0;
 ;
-exports.compoundedTranslations = {
+const advancedCompositeTranslations = {
+    "/-\\": ["a"],
+    "[3": ["b"],
+    "[)": ["d"],
+    "|=": ["f"],
+    "|-|": ["h"],
+    "\\": ["i", "l"],
+    "/": ["i", "l"],
+    "_|": ["j"],
+    "|<": ["k"],
+    "|_": ["l"],
+    "/\\/\\": ["m"],
+    "|\\/|": ["m"],
+    "/\\/": ["n"],
+    "|\\|": ["n"],
+    "|v": ["n"],
+    "[]": ["n"],
+    "|*": ["p"],
+    "|d": ["p"],
+    "(_,)": ["q"],
+    "/2": ["r"],
+    "'|'": ["t"],
+    "(_)": ["u"],
+    "|_|": ["u"],
+    "\\/": ["v"],
+    "|/": ["v"],
+    "\\/\\/": ["w"],
+    "\\|/": ["w"],
+    "><": ["x"]
+};
+const balloonTranslations = {
+    "Ⓐ": ["a"],
+    "ⓐ": ["a"],
+    "Ⓑ": ["b"],
+    "ⓑ": ["b"],
+    "Ⓒ": ["c"],
+    "ⓒ": ["c"],
+    "Ⓓ": ["d"],
+    "ⓓ": ["d"],
+    "Ⓔ": ["e"],
+    "ⓔ": ["e"],
+    "Ⓕ": ["f"],
+    "ⓕ": ["f"],
+    "Ⓖ": ["g"],
+    "ⓖ": ["g"],
+    "Ⓗ": ["h"],
+    "ⓗ": ["h"],
+    "Ⓘ": ["i"],
+    "ⓘ": ["i"],
+    "Ⓙ": ["j"],
+    "ⓙ": ["j"],
+    "Ⓚ": ["k"],
+    "ⓚ": ["k"],
+    "Ⓛ": ["l"],
+    "ⓛ": ["l"],
+    "Ⓜ": ["m"],
+    "ⓜ": ["m"],
+    "Ⓝ": ["n"],
+    "ⓝ": ["n"],
+    "Ⓞ": ["o"],
+    "ⓞ": ["o"],
+    "Ⓟ": ["p"],
+    "ⓟ": ["p"],
+    "Ⓠ": ["q"],
+    "ⓠ": ["q"],
+    "Ⓡ": ["r"],
+    "ⓡ": ["r"],
+    "Ⓢ": ["s"],
+    "ⓢ": ["s"],
+    "Ⓣ": ["t"],
+    "ⓣ": ["t"],
+    "Ⓤ": ["u"],
+    "ⓤ": ["u"],
+    "Ⓥ": ["v"],
+    "ⓥ": ["v"],
+    "Ⓦ": ["w"],
+    "ⓦ": ["w"],
+    "Ⓧ": ["x"],
+    "ⓧ": ["x"],
+    "Ⓨ": ["y"],
+    "ⓨ": ["y"],
+    "Ⓩ": ["z"],
+    "ⓩ": ["z"]
+};
+const compoundedTranslations = {
     "æ": ["ae"],
     "ǣ": ["ae"],
     "ǽ": ["ae"],
@@ -23,7 +107,7 @@ exports.compoundedTranslations = {
     "œ": ["oe"],
     "ȹ": ["qp", "op", "qo"]
 };
-exports.fractionTranslations = {
+const fractionTranslations = {
     "½": ["12"],
     "¼": ["14"],
     "¾": ["34"],
@@ -33,11 +117,11 @@ exports.fractionTranslations = {
     "℅": ["co"],
     "℆": ["cu"]
 };
-exports.letterSwapTranslations = {
+const letterSwapTranslations = {
     "s": ["z"],
     "z": ["s"]
 };
-exports.numberTranslations = {
+const numberTranslations = {
     "1": ["i", "l"],
     "2": ["z"],
     "ƻ": ["2"],
@@ -50,14 +134,16 @@ exports.numberTranslations = {
     "9": ["q", "g"],
     "0": ["o"]
 };
-exports.punctuationTranslations = {
-    "!": ["i", "l"],
+const punctuationTranslations = {
     "@": ["a"],
-    "$": ["s"],
     "^": ["a"],
+    "#": ["h"],
+    "!": ["i", "l"],
+    "|": ["l"],
+    "$": ["s"],
     "+": ["t"]
 };
-exports.scriptTranslations = {
+const scriptTranslations = {
     "ℬ": ["b"],
     "ℂ": ["c"],
     "ℭ": ["c"],
@@ -90,14 +176,7 @@ exports.scriptTranslations = {
     "ℝ": ["r"],
     "ℤ": ["z"]
 };
-exports.slashTranslations = {
-    "\\": ["i", "l"],
-    "/": ["i", "l"],
-    "\\/\\/": ["w"],
-    "/\\/": ["n"],
-    "/\\/\\": ["m"]
-};
-exports.smallTranslations = {
+const smallTranslations = {
     "ᴬ": ["a"],
     "ᴀ": ["a"],
     "ᵃ": ["a"],
@@ -130,6 +209,7 @@ exports.smallTranslations = {
     "ᴴ": ["h"],
     "ᵸ": ["h"],
     "ʰ": ["h"],
+    "н": ["h"],
     "◌ͪ": ["h"],
     "ₕ": ["h"],
     "ʜ": ["h"],
@@ -149,6 +229,7 @@ exports.smallTranslations = {
     "ᵏ": ["k"],
     "ₖ": ["k"],
     "ᴋ": ["k"],
+    "κ": ["k"],
     "ᴸ": ["l"],
     "ᶫ": ["l"],
     "ˡ": ["l"],
@@ -161,6 +242,7 @@ exports.smallTranslations = {
     "ₘ": ["m"],
     "ᴍ": ["m"],
     "ͫ": ["m"],
+    "м": ["m"],
     "ᴺ": ["n"],
     "ᶰ": ["n"],
     "ⁿ": ["n"],
@@ -217,13 +299,13 @@ exports.smallTranslations = {
     "ᶻ": ["z"],
     "ᴢ": ["z"]
 };
-exports.superscriptTranslations = {
+const superscriptTranslations = {
     "℻": ["fax"],
     "℠": ["sm"],
     "℡": ["tel"],
     "™": ["tm"]
 };
-exports.upsideDownInvertedTranslations = {
+const upsideDownInvertedTranslations = {
     "ɒ": ["a"],
     "ɔ": ["c"],
     "Ǝ": ["e"],
@@ -238,7 +320,7 @@ exports.upsideDownInvertedTranslations = {
     "Ɯ": ["m", "w"],
     "⅄": ["y"]
 };
-exports.otherTranslations = {
+const otherTranslations = {
     "ɑ": ["a"],
     "α": ["a"],
     "Ƃ": ["b"],
@@ -246,15 +328,20 @@ exports.otherTranslations = {
     "Ƅ": ["b"],
     "ƅ": ["b"],
     "β": ["b"],
+    "ς": ["c"],
     "Ɖ": ["d"],
     "Ƌ": ["d"],
     "ƌ": ["d"],
+    "δ": ["d"],
     "℮": ["e"],
     "ℇ": ["e"],
     "℈": ["e"],
     "Ɛ": ["e"],
+    "ɛ": ["e"],
+    "ε": ["e"],
     "ℨ": ["e", "z"],
     "℉": ["f"],
+    "ƒ": ["f"],
     "ℹ": ["i"],
     "Ɩ": ["i"],
     "Ɨ": ["i"],
@@ -265,21 +352,61 @@ exports.otherTranslations = {
     "ƪ": ["l"],
     "Ω": ["n"],
     "ℿ": ["n"],
+    "η": ["n"],
     "№": ["no"],
     "ð": ["o", "d"],
+    "ο": ["o"],
     "℗": ["p"],
     "þ": ["p", "b"],
     "℘": ["p"],
+    "ρ": ["p"],
     "⅊": ["pl", "l"],
     "ℚ": ["q"],
+    "φ": ["q"],
     "℞": ["r", "px"],
     "℟": ["r"],
+    "я": ["r"],
     "ƨ": ["s", "z"],
     "ℸ": ["t"],
+    "τ": ["t"],
     "℧": ["u"],
+    "μ": ["u"],
     "℣": ["v"],
     "Ɣ": ["v", "y"],
     "γ": ["v", "y"],
-    "ℽ": ["y"]
+    "ω": ["w"],
+    "χ": ["x"],
+    "ℽ": ["y"],
+    "λ": ["y"],
+    "ζ": ["z"]
 };
-exports.leetSymbolTranslations = Object.assign({}, exports.compoundedTranslations, exports.fractionTranslations, exports.letterSwapTranslations, exports.numberTranslations, exports.punctuationTranslations, exports.scriptTranslations, exports.slashTranslations, exports.smallTranslations, exports.superscriptTranslations, exports.upsideDownInvertedTranslations, exports.otherTranslations);
+exports.leetSymbolTranslations = Object.assign({}, advancedCompositeTranslations, balloonTranslations, compoundedTranslations, fractionTranslations, letterSwapTranslations, numberTranslations, punctuationTranslations, scriptTranslations, smallTranslations, superscriptTranslations, upsideDownInvertedTranslations, otherTranslations);
+exports.simpleTranslations = {};
+exports.complexTranslations = {};
+exports.leetSymbolTranslationKeys = Object.keys(exports.leetSymbolTranslations);
+for (const translationKey of exports.leetSymbolTranslationKeys) {
+    let isSimple = translationKey.length === 1 &&
+        exports.leetSymbolTranslations[translationKey].length === 1;
+    if (isSimple) {
+        for (const potentiallyComplexTranslationKey of exports.leetSymbolTranslationKeys) {
+            if ((potentiallyComplexTranslationKey.includes(translationKey) &&
+                potentiallyComplexTranslationKey !== translationKey)) {
+                isSimple = false;
+                break;
+            }
+            const potentiallyMatchingReplacementValues = exports.leetSymbolTranslations[potentiallyComplexTranslationKey];
+            for (const potentialValue of potentiallyMatchingReplacementValues) {
+                if (potentialValue.includes(translationKey)) {
+                    isSimple = false;
+                    break;
+                }
+            }
+        }
+    }
+    if (isSimple) {
+        exports.simpleTranslations[translationKey] = exports.leetSymbolTranslations[translationKey];
+    }
+    else {
+        exports.complexTranslations[translationKey] = exports.leetSymbolTranslations[translationKey];
+    }
+}
