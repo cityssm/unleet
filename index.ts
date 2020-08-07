@@ -1,4 +1,5 @@
-import * as removeAccents from "remove-accents";
+import * as diacritic from "diacritic";
+
 import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./leetTranslations";
 
 
@@ -67,7 +68,7 @@ export const unleet = (leetString: string) => {
   cleanLeetString = cleanLeetString.replace(/ +/g, " ");
 
   // remove accents
-  cleanLeetString = removeAccents(cleanLeetString);
+  cleanLeetString = diacritic.clean(cleanLeetString);
 
   // do simple translations
 
@@ -77,8 +78,6 @@ export const unleet = (leetString: string) => {
       cleanLeetString = cleanLeetString.replace(leetSymbol, simpleTranslations[leetSymbol][0]);
     }
   }
-
-  console.log("Recurse value: " + cleanLeetString);
 
   return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set()));
 };

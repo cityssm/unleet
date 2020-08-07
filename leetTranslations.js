@@ -32,60 +32,6 @@ const advancedCompositeTranslations = {
     "\\|/": ["w"],
     "><": ["x"]
 };
-const balloonTranslations = {
-    "Ⓐ": ["a"],
-    "ⓐ": ["a"],
-    "Ⓑ": ["b"],
-    "ⓑ": ["b"],
-    "Ⓒ": ["c"],
-    "ⓒ": ["c"],
-    "Ⓓ": ["d"],
-    "ⓓ": ["d"],
-    "Ⓔ": ["e"],
-    "ⓔ": ["e"],
-    "Ⓕ": ["f"],
-    "ⓕ": ["f"],
-    "Ⓖ": ["g"],
-    "ⓖ": ["g"],
-    "Ⓗ": ["h"],
-    "ⓗ": ["h"],
-    "Ⓘ": ["i"],
-    "ⓘ": ["i"],
-    "Ⓙ": ["j"],
-    "ⓙ": ["j"],
-    "Ⓚ": ["k"],
-    "ⓚ": ["k"],
-    "Ⓛ": ["l"],
-    "ⓛ": ["l"],
-    "Ⓜ": ["m"],
-    "ⓜ": ["m"],
-    "Ⓝ": ["n"],
-    "ⓝ": ["n"],
-    "Ⓞ": ["o"],
-    "ⓞ": ["o"],
-    "Ⓟ": ["p"],
-    "ⓟ": ["p"],
-    "Ⓠ": ["q"],
-    "ⓠ": ["q"],
-    "Ⓡ": ["r"],
-    "ⓡ": ["r"],
-    "Ⓢ": ["s"],
-    "ⓢ": ["s"],
-    "Ⓣ": ["t"],
-    "ⓣ": ["t"],
-    "Ⓤ": ["u"],
-    "ⓤ": ["u"],
-    "Ⓥ": ["v"],
-    "ⓥ": ["v"],
-    "Ⓦ": ["w"],
-    "ⓦ": ["w"],
-    "Ⓧ": ["x"],
-    "ⓧ": ["x"],
-    "Ⓨ": ["y"],
-    "ⓨ": ["y"],
-    "Ⓩ": ["z"],
-    "ⓩ": ["z"]
-};
 const compoundedTranslations = {
     "æ": ["ae"],
     "ǣ": ["ae"],
@@ -147,14 +93,18 @@ const scriptTranslations = {
     "ℬ": ["b"],
     "ℂ": ["c"],
     "ℭ": ["c"],
+    "𝒸": ["c"],
     "ⅅ": ["d"],
     "ⅆ": ["d"],
     "Ɗ": ["d"],
+    "𝒹": ["d"],
     "ℯ": ["e"],
     "ⅇ": ["e"],
     "ℰ": ["e"],
     "ℱ": ["f"],
+    "𝒻": ["f"],
     "ℊ": ["g"],
+    "𝓰": ["g"],
     "ℋ": ["h"],
     "ℌ": ["h"],
     "ℍ": ["h"],
@@ -174,7 +124,9 @@ const scriptTranslations = {
     "ℛ": ["r"],
     "ℜ": ["r"],
     "ℝ": ["r"],
-    "ℤ": ["z"]
+    "𝓌": ["w"],
+    "ℤ": ["z"],
+    "𝓏": ["z"]
 };
 const smallTranslations = {
     "ᴬ": ["a"],
@@ -186,6 +138,7 @@ const smallTranslations = {
     "ᴮ": ["b"],
     "ᵇ": ["b"],
     "ʙ": ["b"],
+    "ᵦ": ["b"],
     "ᶜ": ["c"],
     "◌ͨ": ["c"],
     "ᴄ": ["c"],
@@ -203,6 +156,7 @@ const smallTranslations = {
     "ͤ": ["e"],
     "ᶠ": ["f"],
     "ꜰ": ["f"],
+    "ғ": ["f"],
     "ᴳ": ["g"],
     "ᵍ": ["g"],
     "ɢ": ["g"],
@@ -258,6 +212,8 @@ const smallTranslations = {
     "ᵖ": ["p"],
     "ₚ": ["p"],
     "ᴘ": ["p"],
+    "ᵠ": ["q"],
+    "ᵩ": ["q"],
     "ᴿ": ["r"],
     "ʳ": ["r"],
     "◌ͬ": ["r"],
@@ -296,6 +252,7 @@ const smallTranslations = {
     "ͯ": ["x"],
     "ʸ": ["y"],
     "ʏ": ["y"],
+    "ᵧ": ["y"],
     "ᶻ": ["z"],
     "ᴢ": ["z"]
 };
@@ -375,12 +332,13 @@ const otherTranslations = {
     "Ɣ": ["v", "y"],
     "γ": ["v", "y"],
     "ω": ["w"],
+    "ᾣ": ["w"],
     "χ": ["x"],
     "ℽ": ["y"],
     "λ": ["y"],
     "ζ": ["z"]
 };
-exports.leetSymbolTranslations = Object.assign({}, advancedCompositeTranslations, balloonTranslations, compoundedTranslations, fractionTranslations, letterSwapTranslations, numberTranslations, punctuationTranslations, scriptTranslations, smallTranslations, superscriptTranslations, upsideDownInvertedTranslations, otherTranslations);
+exports.leetSymbolTranslations = Object.assign({}, advancedCompositeTranslations, compoundedTranslations, fractionTranslations, letterSwapTranslations, numberTranslations, punctuationTranslations, scriptTranslations, smallTranslations, superscriptTranslations, upsideDownInvertedTranslations, otherTranslations);
 exports.simpleTranslations = {};
 exports.complexTranslations = {};
 exports.leetSymbolTranslationKeys = Object.keys(exports.leetSymbolTranslations);

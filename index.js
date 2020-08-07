@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.unleet = void 0;
-const removeAccents = require("remove-accents");
+const diacritic = require("diacritic");
 const leetTranslations_1 = require("./leetTranslations");
 const isLetter = (potentialLetter) => {
     if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
@@ -43,12 +43,11 @@ exports.unleet = (leetString) => {
     let cleanLeetString = leetString.toLowerCase();
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
-    cleanLeetString = removeAccents(cleanLeetString);
+    cleanLeetString = diacritic.clean(cleanLeetString);
     for (const leetSymbol of Object.keys(leetTranslations_1.simpleTranslations)) {
         while (cleanLeetString.includes(leetSymbol)) {
             cleanLeetString = cleanLeetString.replace(leetSymbol, leetTranslations_1.simpleTranslations[leetSymbol][0]);
         }
     }
-    console.log("Recurse value: " + cleanLeetString);
     return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set()));
 };
