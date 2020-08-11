@@ -1,6 +1,7 @@
 # unleet
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fd8f113908c04c54800c9454d50f2e2a)](https://app.codacy.com/gh/cityssm/unleet?utm_source=github.com&utm_medium=referral&utm_content=cityssm/unleet&utm_campaign=Badge_Grade_Dashboard)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e9343aee27eef62205f4/maintainability)](https://codeclimate.com/github/cityssm/unleet/maintainability)
 
 Ensuring that text entered by a user is _polite_ can be difficult.
 Generating memorable passwords automatically using letters and numbers,

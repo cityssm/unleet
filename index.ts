@@ -1,6 +1,6 @@
 import * as diacritic from "diacritic";
 
-import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./leetTranslations";
+import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./translations/translations";
 
 
 const isLetter = (potentialLetter: string) => {

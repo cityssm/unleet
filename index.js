@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.unleet = void 0;
 const diacritic = require("diacritic");
-const leetTranslations_1 = require("./leetTranslations");
+const translations_1 = require("./translations/translations");
 const isLetter = (potentialLetter) => {
     if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
         return true;
@@ -10,7 +10,7 @@ const isLetter = (potentialLetter) => {
     return false;
 };
 const isPotentialLeet = (potentialLeetString) => {
-    for (const leetSymbol of leetTranslations_1.leetSymbolTranslationKeys) {
+    for (const leetSymbol of translations_1.leetSymbolTranslationKeys) {
         if (isLetter(leetSymbol)) {
             continue;
         }
@@ -21,9 +21,9 @@ const isPotentialLeet = (potentialLeetString) => {
     return false;
 };
 const unleetRecurse = (lowerCaseLeetString, deleetStrings, previousStrings) => {
-    for (const leetSymbol of Object.keys(leetTranslations_1.complexTranslations)) {
+    for (const leetSymbol of Object.keys(translations_1.complexTranslations)) {
         if (lowerCaseLeetString.includes(leetSymbol)) {
-            const translations = leetTranslations_1.complexTranslations[leetSymbol];
+            const translations = translations_1.complexTranslations[leetSymbol];
             for (const translation of translations) {
                 const newString = lowerCaseLeetString.replace(leetSymbol, translation);
                 if (!previousStrings.has(newString)) {
@@ -44,9 +44,9 @@ exports.unleet = (leetString) => {
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
     cleanLeetString = diacritic.clean(cleanLeetString);
-    for (const leetSymbol of Object.keys(leetTranslations_1.simpleTranslations)) {
+    for (const leetSymbol of Object.keys(translations_1.simpleTranslations)) {
         while (cleanLeetString.includes(leetSymbol)) {
-            cleanLeetString = cleanLeetString.replace(leetSymbol, leetTranslations_1.simpleTranslations[leetSymbol][0]);
+            cleanLeetString = cleanLeetString.replace(leetSymbol, translations_1.simpleTranslations[leetSymbol][0]);
         }
     }
     return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set()));

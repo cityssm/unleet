@@ -1,6 +1,6 @@
 {
   "name": "@cityssm/unleet",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Removes symbols and character combinations from a text string, and replaces them with the letters they commonly represent.",
   "main": "index.js",
   "scripts": {
@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/cityssm/unleet#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.7.1",
-    "@typescript-eslint/parser": "^3.7.1",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "eslint": "^7.5.0",
     "eslint-config-standard-with-typescript": "^18.0.2",
     "eslint-plugin-import": "^2.22.0",
