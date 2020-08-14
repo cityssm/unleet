@@ -20,24 +20,24 @@ const isPotentialLeet = (potentialLeetString) => {
     }
     return false;
 };
-const unleetRecurse = (lowerCaseLeetString, deleetStrings, previousStrings) => {
-    for (const leetSymbol of Object.keys(translations_1.complexTranslations)) {
+const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, complexTranslationKeys) => {
+    for (const leetSymbol of complexTranslationKeys) {
         if (lowerCaseLeetString.includes(leetSymbol)) {
             const translations = translations_1.complexTranslations[leetSymbol];
             for (const translation of translations) {
                 const newString = lowerCaseLeetString.replace(leetSymbol, translation);
                 if (!previousStrings.has(newString)) {
                     previousStrings.add(newString);
-                    unleetRecurse(newString, deleetStrings, previousStrings);
+                    unleetRecurse(newString, unleetStrings, previousStrings, complexTranslationKeys);
                 }
             }
         }
     }
     if (!isPotentialLeet(lowerCaseLeetString)) {
-        deleetStrings.add(lowerCaseLeetString);
-        return deleetStrings;
+        unleetStrings.add(lowerCaseLeetString);
+        return unleetStrings;
     }
-    return deleetStrings;
+    return unleetStrings;
 };
 exports.unleet = (leetString) => {
     let cleanLeetString = leetString.toLowerCase();
@@ -49,5 +49,8 @@ exports.unleet = (leetString) => {
             cleanLeetString = cleanLeetString.replace(leetSymbol, translations_1.simpleTranslations[leetSymbol][0]);
         }
     }
-    return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set()));
+    const complexTranslationKeys = Object.keys(translations_1.complexTranslations).filter(function (leetSymbol) {
+        return cleanLeetString.includes(leetSymbol);
+    });
+    return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set(), complexTranslationKeys));
 };

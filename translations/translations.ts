@@ -36,10 +36,10 @@ for (const translationKey of leetSymbolTranslationKeys) {
 
   if (isSimple) {
 
-    // scan all complex keys for the character
+    // Scan all complex keys for the character
     for (const potentiallyComplexTranslationKey of leetSymbolTranslationKeys) {
 
-      // if another translationKey contains the character
+      // If another translationKey contains the character
       if ((potentiallyComplexTranslationKey.includes(translationKey) &&
         potentiallyComplexTranslationKey !== translationKey)) {
 
