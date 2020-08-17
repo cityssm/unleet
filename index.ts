@@ -3,6 +3,21 @@ import * as diacritic from "diacritic";
 import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./translations/translations";
 
 
+const indiciesOf = (sourceString: string, searchString: string) => {
+
+  const indicies: number[] = [];
+
+  for (let index = 0; index < sourceString.length - searchString.length; index += 1) {
+
+    if (sourceString.substring(index, searchString.length + index) === searchString) {
+      indicies.push(index);
+    }
+  }
+
+  return indicies;
+};
+
+
 const isLetter = (potentialLetter: string) => {
   if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
     return true;
@@ -39,18 +54,27 @@ const unleetRecurse = (lowerCaseLeetString: string,
     // If the current leet symbol is found in the string
     if (lowerCaseLeetString.includes(leetSymbol)) {
 
+      let matchingIndicies = indiciesOf(lowerCaseLeetString, leetSymbol);
+
+      if (matchingIndicies.length === 0) {
+        matchingIndicies = [lowerCaseLeetString.indexOf(leetSymbol)];
+      }
+
       const translations = complexTranslations[leetSymbol];
 
       // Loop through the translations for the current leet symbol
       for (const translation of translations) {
 
-        // Create a new string with the current translation
-        const newString = lowerCaseLeetString.replace(leetSymbol, translation);
+        for (const symbolIndex of matchingIndicies) {
 
-        // If the translation has not been seen before
-        if (!previousStrings.has(newString)) {
-          previousStrings.add(newString);
-          unleetRecurse(newString, unleetStrings, previousStrings, complexTranslationKeys);
+          const newString = lowerCaseLeetString.substring(0, symbolIndex) +
+            translation + lowerCaseLeetString.substring(symbolIndex + leetSymbol.length);
+
+          // If the translation has not been seen before
+          if (!previousStrings.has(newString)) {
+            previousStrings.add(newString);
+            unleetRecurse(newString, unleetStrings, previousStrings, complexTranslationKeys);
+          }
         }
       }
     }

@@ -11,6 +11,8 @@ exports.compoundedTranslations = {
     "ȹ": ["qp", "op", "qo"]
 };
 exports.letterSwapTranslations = {
+    "o": ["q"],
+    "q": ["o"],
     "s": ["z"],
     "z": ["s"]
 };

@@ -3,6 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.unleet = void 0;
 const diacritic = require("diacritic");
 const translations_1 = require("./translations/translations");
+const indiciesOf = (sourceString, searchString) => {
+    const indicies = [];
+    for (let index = 0; index < sourceString.length - searchString.length; index += 1) {
+        if (sourceString.substring(index, searchString.length + index) === searchString) {
+            indicies.push(index);
+        }
+    }
+    return indicies;
+};
 const isLetter = (potentialLetter) => {
     if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
         return true;
@@ -23,12 +32,19 @@ const isPotentialLeet = (potentialLeetString) => {
 const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, complexTranslationKeys) => {
     for (const leetSymbol of complexTranslationKeys) {
         if (lowerCaseLeetString.includes(leetSymbol)) {
+            let matchingIndicies = indiciesOf(lowerCaseLeetString, leetSymbol);
+            if (matchingIndicies.length === 0) {
+                matchingIndicies = [lowerCaseLeetString.indexOf(leetSymbol)];
+            }
             const translations = translations_1.complexTranslations[leetSymbol];
             for (const translation of translations) {
-                const newString = lowerCaseLeetString.replace(leetSymbol, translation);
-                if (!previousStrings.has(newString)) {
-                    previousStrings.add(newString);
-                    unleetRecurse(newString, unleetStrings, previousStrings, complexTranslationKeys);
+                for (const symbolIndex of matchingIndicies) {
+                    const newString = lowerCaseLeetString.substring(0, symbolIndex) +
+                        translation + lowerCaseLeetString.substring(symbolIndex + leetSymbol.length);
+                    if (!previousStrings.has(newString)) {
+                        previousStrings.add(newString);
+                        unleetRecurse(newString, unleetStrings, previousStrings, complexTranslationKeys);
+                    }
                 }
             }
         }

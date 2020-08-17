@@ -11,6 +11,8 @@ export const compoundedTranslations: LeetSymbolTranslationObject = {
 };
 
 export const letterSwapTranslations: LeetSymbolTranslationObject = {
+  "o": ["q"],
+  "q": ["o"],
   "s": ["z"],
   "z": ["s"]
 };
