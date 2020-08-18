@@ -2,19 +2,35 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require("assert");
 const index_1 = require("../index");
-const cleanAlphabet = "abcdefghijklmnopqrstuvwxyz";
-const alphabetTestWords = [
-    "@8ςƉ3ƒg#!j|<1ℳNȹ9r$7u\\/w><yζ",
-    "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
-    "ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐⁿᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ",
-    "ₐᵦ𝒸𝒹ₑ𝒻𝓰ₕᵢⱼₖₗₘₙₒₚᵩᵣₛₜᵤᵥ𝓌ₓᵧ𝓏",
-    "ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ",
-    "ₐɃČḒₑḟḡₕᵢⱼₖₗₘₙₒₚꝘᵣₛₜᵤᵥᾣₓƳɀ"
+const cleanAlphabetStart = "abcdefghijklm";
+const cleanAlphabetEnd = "nopqrstuvwxyz";
+const alphabetTestWordsStart = [
+    "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍ",
+    "ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐ",
+    "ₐᵦ𝒸𝒹ₑ𝒻𝓰ₕᵢⱼₖₗₘ",
+    "ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹ",
+    "@8ςƉ3ƒ(_+#!j|<1ℳ",
+    "ₐɃČḒₑḟḡₕᵢⱼₖₗₘ"
 ];
-for (const testWord of alphabetTestWords) {
-    describe("unleet(\"" + testWord + "\")", function () {
-        it("Has one result = \"" + cleanAlphabet + "\"", () => {
-            assert.ok(index_1.unleet(testWord).includes(cleanAlphabet));
+const alphabetTestWordsEnd = [
+    "ɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
+    "ⁿᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ",
+    "ₙₒₚᵩᵣₛₜᵤᵥ𝓌ₓᵧ𝓏",
+    "ᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ",
+    "Nȹ9r$7u\\/w><yζ",
+    "ₙₒₚꝘᵣₛₜᵤᵥᾣₓƳɀ"
+];
+for (const testWord of alphabetTestWordsStart) {
+    describe("unleet(\"" + testWord + "\")", () => {
+        it("Has one result = \"" + cleanAlphabetStart + "\"", () => {
+            assert.ok(index_1.unleet(testWord).includes(cleanAlphabetStart));
+        });
+    });
+}
+for (const testWord of alphabetTestWordsEnd) {
+    describe("unleet(\"" + testWord + "\")", () => {
+        it("Has one result = \"" + cleanAlphabetEnd + "\"", () => {
+            assert.ok(index_1.unleet(testWord).includes(cleanAlphabetEnd));
         });
     });
 }

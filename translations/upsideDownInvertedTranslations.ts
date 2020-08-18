@@ -13,5 +13,7 @@ export const upsideDownInvertedTranslations: LeetSymbolTranslationObject = {
   "ⅎ": ["f"],
   "⅁": ["g"],
   "Ɯ": ["m", "w"],
+  "Я": ["r"],
+  "я": ["r"],
   "⅄": ["y"]
 };

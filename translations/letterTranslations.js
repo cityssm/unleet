@@ -12,7 +12,10 @@ exports.compoundedTranslations = {
 };
 exports.letterSwapTranslations = {
     "o": ["q"],
+    "oo": ["ou"],
     "q": ["o"],
     "s": ["z"],
+    "vv": ["w"],
+    "x": ["k"],
     "z": ["s"]
 };

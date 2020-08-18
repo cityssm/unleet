@@ -1,11 +1,11 @@
 {
   "name": "@cityssm/unleet",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "Removes symbols and character combinations from a text string, and replaces them with the letters they commonly represent.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "coverage": "nyc --reporter=lcov npm run test"
+    "test": "mocha --timeout 20000",
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
   },
   "keywords": [
     "bad-words",
+    "decode",
     "deleet",
     "leet-speak",
     "leet",
@@ -25,10 +26,10 @@
   },
   "homepage": "https://github.com/cityssm/unleet#readme",
   "devDependencies": {
-    "@types/mocha": "^8.0.2",
-    "@types/node": "^14.0.27",
-    "@typescript-eslint/eslint-plugin": "^3.9.0",
-    "@typescript-eslint/parser": "^3.9.0",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^14.6.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.9.1",
     "eslint": "^7.7.0",
     "eslint-config-standard-with-typescript": "^18.0.2",
     "eslint-plugin-import": "^2.22.0",

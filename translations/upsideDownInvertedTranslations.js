@@ -14,5 +14,7 @@ exports.upsideDownInvertedTranslations = {
     "ⅎ": ["f"],
     "⅁": ["g"],
     "Ɯ": ["m", "w"],
+    "Я": ["r"],
+    "я": ["r"],
     "⅄": ["y"]
 };

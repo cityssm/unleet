@@ -80,6 +80,7 @@ export const smallTranslations: LeetSymbolTranslationObject = {
   "ₒ": ["o"],
   "ᴏ": ["o"],
   "ͦ": ["o"],
+  "º": ["o"],
   "ᴾ": ["p"],
   "ᵖ": ["p"],
   "ₚ": ["p"],

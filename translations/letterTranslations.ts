@@ -12,7 +12,10 @@ export const compoundedTranslations: LeetSymbolTranslationObject = {
 
 export const letterSwapTranslations: LeetSymbolTranslationObject = {
   "o": ["q"],
+  "oo": ["ou"],
   "q": ["o"],
   "s": ["z"],
+  "vv": ["w"],
+  "x": ["k"],
   "z": ["s"]
 };

@@ -2,27 +2,46 @@ import * as assert from "assert";
 import { unleet } from "../index";
 
 
-const cleanAlphabet = "abcdefghijklmnopqrstuvwxyz";
+const cleanAlphabetStart = "abcdefghijklm";
+const cleanAlphabetEnd = "nopqrstuvwxyz";
 
 
-const alphabetTestWords = [
-  "@8ςƉ3ƒg#!j|<1ℳNȹ9r$7u\\/w><yζ",
-  "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
-  "ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐⁿᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ",
-  "ₐᵦ𝒸𝒹ₑ𝒻𝓰ₕᵢⱼₖₗₘₙₒₚᵩᵣₛₜᵤᵥ𝓌ₓᵧ𝓏",
-  "ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ",
-  "ₐɃČḒₑḟḡₕᵢⱼₖₗₘₙₒₚꝘᵣₛₜᵤᵥᾣₓƳɀ"];
+const alphabetTestWordsStart = [
+  "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍ",
+  "ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐ",
+  "ₐᵦ𝒸𝒹ₑ𝒻𝓰ₕᵢⱼₖₗₘ",
+  "ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹ",
+  "@8ςƉ3ƒ(_+#!j|<1ℳ",
+  "ₐɃČḒₑḟḡₕᵢⱼₖₗₘ"];
+
+const alphabetTestWordsEnd = [
+  "ɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ",
+  "ⁿᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ",
+  "ₙₒₚᵩᵣₛₜᵤᵥ𝓌ₓᵧ𝓏",
+  "ᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ",
+  "Nȹ9r$7u\\/w><yζ",
+  "ₙₒₚꝘᵣₛₜᵤᵥᾣₓƳɀ"
+];
 
 
-for (const testWord of alphabetTestWords) {
+for (const testWord of alphabetTestWordsStart) {
 
-  describe("unleet(\"" + testWord + "\")", function() {
-    it("Has one result = \"" + cleanAlphabet + "\"", () => {
+  describe("unleet(\"" + testWord + "\")", () => {
+    it("Has one result = \"" + cleanAlphabetStart + "\"", () => {
       assert.ok(
-        unleet(testWord).includes(cleanAlphabet)
+        unleet(testWord).includes(cleanAlphabetStart)
       );
     });
-
   });
+}
 
+for (const testWord of alphabetTestWordsEnd) {
+
+  describe("unleet(\"" + testWord + "\")", () => {
+    it("Has one result = \"" + cleanAlphabetEnd + "\"", () => {
+      assert.ok(
+        unleet(testWord).includes(cleanAlphabetEnd)
+      );
+    });
+  });
 }
