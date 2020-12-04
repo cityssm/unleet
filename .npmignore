@@ -9,6 +9,5 @@ test
 .eslintrc.js
 .gitignore
 .npmignore
-.snyk
-.travis.yml
+appveyor.yml
 tsconfig.json
