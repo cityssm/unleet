@@ -55,8 +55,11 @@ const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, comp
     }
     return unleetStrings;
 };
-exports.unleet = (leetString) => {
-    let cleanLeetString = leetString.toLowerCase();
+const unleet = (leetString) => {
+    if (leetString === null || leetString === undefined || leetString === "") {
+        return [""];
+    }
+    let cleanLeetString = (leetString + "").toLowerCase();
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
     cleanLeetString = diacritic.clean(cleanLeetString);
@@ -70,3 +73,4 @@ exports.unleet = (leetString) => {
     });
     return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set(), complexTranslationKeys));
 };
+exports.unleet = unleet;

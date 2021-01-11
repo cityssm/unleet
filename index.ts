@@ -90,10 +90,14 @@ const unleetRecurse = (lowerCaseLeetString: string,
 };
 
 
-export const unleet = (leetString: string) => {
+export const unleet = (leetString: string): string[] => {
+
+  if (leetString === null || leetString === undefined || leetString === "") {
+    return [""];
+  }
 
   // Convert to lower case
-  let cleanLeetString = leetString.toLowerCase();
+  let cleanLeetString = (leetString + "").toLowerCase();
 
   // Remove periods
   cleanLeetString = cleanLeetString.replace(/\./g, " ");
