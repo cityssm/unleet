@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.upsideDownInvertedTranslations = void 0;
-exports.upsideDownInvertedTranslations = {
+export const upsideDownInvertedTranslations = {
     "ɒ": ["a"],
     "ɔ": ["c"],
     "Ǝ": ["e"],

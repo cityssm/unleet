@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.otherTranslations = void 0;
-exports.otherTranslations = {
+export const otherTranslations = {
     "ɑ": ["a"],
     "α": ["a"],
     "∂": ["a"],

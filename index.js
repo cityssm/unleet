@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.unleet = void 0;
-const diacritic = require("diacritic");
-const translations_1 = require("./translations/translations");
+import diacritic from "diacritic";
+import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./translations/translations.js";
 const indiciesOf = (sourceString, searchString) => {
     const indicies = [];
     for (let index = 0; index < sourceString.length - searchString.length; index += 1) {
@@ -19,7 +16,7 @@ const isLetter = (potentialLetter) => {
     return false;
 };
 const isPotentialLeet = (potentialLeetString) => {
-    for (const leetSymbol of translations_1.leetSymbolTranslationKeys) {
+    for (const leetSymbol of leetSymbolTranslationKeys) {
         if (isLetter(leetSymbol)) {
             continue;
         }
@@ -36,7 +33,7 @@ const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, comp
             if (matchingIndicies.length === 0) {
                 matchingIndicies = [lowerCaseLeetString.indexOf(leetSymbol)];
             }
-            const translations = translations_1.complexTranslations[leetSymbol];
+            const translations = complexTranslations[leetSymbol];
             for (const translation of translations) {
                 for (const symbolIndex of matchingIndicies) {
                     const newString = lowerCaseLeetString.substring(0, symbolIndex) +
@@ -55,7 +52,7 @@ const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, comp
     }
     return unleetStrings;
 };
-const unleet = (leetString) => {
+export const unleet = (leetString) => {
     if (leetString === null || leetString === undefined || leetString === "") {
         return [""];
     }
@@ -63,14 +60,13 @@ const unleet = (leetString) => {
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
     cleanLeetString = diacritic.clean(cleanLeetString);
-    for (const leetSymbol of Object.keys(translations_1.simpleTranslations)) {
+    for (const leetSymbol of Object.keys(simpleTranslations)) {
         while (cleanLeetString.includes(leetSymbol)) {
-            cleanLeetString = cleanLeetString.replace(leetSymbol, translations_1.simpleTranslations[leetSymbol][0]);
+            cleanLeetString = cleanLeetString.replace(leetSymbol, simpleTranslations[leetSymbol][0]);
         }
     }
-    const complexTranslationKeys = Object.keys(translations_1.complexTranslations).filter(function (leetSymbol) {
+    const complexTranslationKeys = Object.keys(complexTranslations).filter(function (leetSymbol) {
         return cleanLeetString.includes(leetSymbol);
     });
     return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set(), complexTranslationKeys));
 };
-exports.unleet = unleet;

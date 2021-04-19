@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.letterSwapTranslations = exports.compoundedTranslations = void 0;
-exports.compoundedTranslations = {
+export const compoundedTranslations = {
     "ȸ": ["db", "ob", "do"],
     "℔": ["lb"],
     "Ǉ": ["lj"],
@@ -10,7 +7,7 @@ exports.compoundedTranslations = {
     "œ": ["oe"],
     "ȹ": ["qp", "op", "qo"]
 };
-exports.letterSwapTranslations = {
+export const letterSwapTranslations = {
     "o": ["q"],
     "oo": ["ou"],
     "q": ["o"],

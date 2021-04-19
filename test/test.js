@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const assert = require("assert");
-const index_1 = require("../index");
+import * as assert from "assert";
+import { unleet } from "../index.js";
 const cleanAlphabetStart = "abcdefghijklm";
 const cleanAlphabetEnd = "nopqrstuvwxyz";
 const alphabetTestWordsStart = [
@@ -23,14 +21,14 @@ const alphabetTestWordsEnd = [
 for (const testWord of alphabetTestWordsStart) {
     describe("unleet(\"" + testWord + "\")", () => {
         it("Has one result = \"" + cleanAlphabetStart + "\"", () => {
-            assert.ok(index_1.unleet(testWord).includes(cleanAlphabetStart));
+            assert.ok(unleet(testWord).includes(cleanAlphabetStart));
         });
     });
 }
 for (const testWord of alphabetTestWordsEnd) {
     describe("unleet(\"" + testWord + "\")", () => {
         it("Has one result = \"" + cleanAlphabetEnd + "\"", () => {
-            assert.ok(index_1.unleet(testWord).includes(cleanAlphabetEnd));
+            assert.ok(unleet(testWord).includes(cleanAlphabetEnd));
         });
     });
 }

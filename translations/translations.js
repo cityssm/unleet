@@ -1,29 +1,26 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.leetSymbolTranslationKeys = exports.complexTranslations = exports.simpleTranslations = exports.leetSymbolTranslations = void 0;
-const letterTranslations_1 = require("./letterTranslations");
-const numberTranslations_1 = require("./numberTranslations");
-const punctuationTranslations_1 = require("./punctuationTranslations");
-const scriptTranslations_1 = require("./scriptTranslations");
-const smallTranslations_1 = require("./smallTranslations");
-const superscriptTranslations_1 = require("./superscriptTranslations");
-const upsideDownInvertedTranslations_1 = require("./upsideDownInvertedTranslations");
-const otherTranslations_1 = require("./otherTranslations");
-exports.leetSymbolTranslations = Object.assign({}, punctuationTranslations_1.advancedPunctuationTranslations, letterTranslations_1.compoundedTranslations, superscriptTranslations_1.fractionTranslations, letterTranslations_1.letterSwapTranslations, numberTranslations_1.numberTranslations, punctuationTranslations_1.punctuationTranslations, scriptTranslations_1.scriptTranslations, smallTranslations_1.smallTranslations, superscriptTranslations_1.superscriptTranslations, upsideDownInvertedTranslations_1.upsideDownInvertedTranslations, otherTranslations_1.otherTranslations);
-exports.simpleTranslations = {};
-exports.complexTranslations = {};
-exports.leetSymbolTranslationKeys = Object.keys(exports.leetSymbolTranslations);
-for (const translationKey of exports.leetSymbolTranslationKeys) {
+import { compoundedTranslations, letterSwapTranslations } from "./letterTranslations.js";
+import { numberTranslations } from "./numberTranslations.js";
+import { advancedPunctuationTranslations, punctuationTranslations } from "./punctuationTranslations.js";
+import { scriptTranslations } from "./scriptTranslations.js";
+import { smallTranslations } from "./smallTranslations.js";
+import { fractionTranslations, superscriptTranslations } from "./superscriptTranslations.js";
+import { upsideDownInvertedTranslations } from "./upsideDownInvertedTranslations.js";
+import { otherTranslations } from "./otherTranslations.js";
+export const leetSymbolTranslations = Object.assign({}, advancedPunctuationTranslations, compoundedTranslations, fractionTranslations, letterSwapTranslations, numberTranslations, punctuationTranslations, scriptTranslations, smallTranslations, superscriptTranslations, upsideDownInvertedTranslations, otherTranslations);
+export const simpleTranslations = {};
+export const complexTranslations = {};
+export const leetSymbolTranslationKeys = Object.keys(leetSymbolTranslations);
+for (const translationKey of leetSymbolTranslationKeys) {
     let isSimple = translationKey.length === 1 &&
-        exports.leetSymbolTranslations[translationKey].length === 1;
+        leetSymbolTranslations[translationKey].length === 1;
     if (isSimple) {
-        for (const potentiallyComplexTranslationKey of exports.leetSymbolTranslationKeys) {
+        for (const potentiallyComplexTranslationKey of leetSymbolTranslationKeys) {
             if ((potentiallyComplexTranslationKey.includes(translationKey) &&
                 potentiallyComplexTranslationKey !== translationKey)) {
                 isSimple = false;
                 break;
             }
-            const potentiallyMatchingReplacementValues = exports.leetSymbolTranslations[potentiallyComplexTranslationKey];
+            const potentiallyMatchingReplacementValues = leetSymbolTranslations[potentiallyComplexTranslationKey];
             for (const potentialValue of potentiallyMatchingReplacementValues) {
                 if (potentialValue.includes(translationKey)) {
                     isSimple = false;
@@ -33,9 +30,9 @@ for (const translationKey of exports.leetSymbolTranslationKeys) {
         }
     }
     if (isSimple) {
-        exports.simpleTranslations[translationKey] = exports.leetSymbolTranslations[translationKey];
+        simpleTranslations[translationKey] = leetSymbolTranslations[translationKey];
     }
     else {
-        exports.complexTranslations[translationKey] = exports.leetSymbolTranslations[translationKey];
+        complexTranslations[translationKey] = leetSymbolTranslations[translationKey];
     }
 }

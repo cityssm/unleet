@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import { unleet } from "../index";
+import { unleet } from "../index.js";
 
 
 describe("unleet(exceptions) ", () => {

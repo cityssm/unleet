@@ -1,11 +1,11 @@
-import { compoundedTranslations, letterSwapTranslations } from "./letterTranslations";
-import { numberTranslations } from "./numberTranslations";
-import { advancedPunctuationTranslations, punctuationTranslations } from "./punctuationTranslations";
-import { scriptTranslations } from "./scriptTranslations";
-import { smallTranslations } from "./smallTranslations";
-import { fractionTranslations, superscriptTranslations } from "./superscriptTranslations";
-import { upsideDownInvertedTranslations } from "./upsideDownInvertedTranslations";
-import { otherTranslations } from "./otherTranslations";
+import { compoundedTranslations, letterSwapTranslations } from "./letterTranslations.js";
+import { numberTranslations } from "./numberTranslations.js";
+import { advancedPunctuationTranslations, punctuationTranslations } from "./punctuationTranslations.js";
+import { scriptTranslations } from "./scriptTranslations.js";
+import { smallTranslations } from "./smallTranslations.js";
+import { fractionTranslations, superscriptTranslations } from "./superscriptTranslations.js";
+import { upsideDownInvertedTranslations } from "./upsideDownInvertedTranslations.js";
+import { otherTranslations } from "./otherTranslations.js";
 
 import type { LeetSymbolTranslationObject } from "./types";
 

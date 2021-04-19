@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.numberTranslations = void 0;
-exports.numberTranslations = {
+export const numberTranslations = {
     "1": ["i", "l"],
     "13": ["b"],
     "2": ["r", "z"],

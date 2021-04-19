@@ -1,6 +1,6 @@
-import * as diacritic from "diacritic";
+import diacritic from "diacritic";
 
-import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./translations/translations";
+import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./translations/translations.js";
 
 
 const indiciesOf = (sourceString: string, searchString: string) => {

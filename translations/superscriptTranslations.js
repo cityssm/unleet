@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.fractionTranslations = exports.superscriptTranslations = void 0;
-exports.superscriptTranslations = {
+export const superscriptTranslations = {
     "℻": ["fax"],
     "℠": ["sm"],
     "℡": ["tel"],
     "™": ["tm"]
 };
-exports.fractionTranslations = {
+export const fractionTranslations = {
     "½": ["12"],
     "¼": ["14"],
     "¾": ["34"],

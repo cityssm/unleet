@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.smallTranslations = void 0;
-exports.smallTranslations = {
+export const smallTranslations = {
     "ᴬ": ["a"],
     "ᴀ": ["a"],
     "ᵃ": ["a"],

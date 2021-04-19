@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.advancedPunctuationTranslations = exports.punctuationTranslations = void 0;
-exports.punctuationTranslations = {
+export const punctuationTranslations = {
     "@": ["a"],
     "^": ["a"],
     "(": ["c"],
@@ -17,7 +14,7 @@ exports.punctuationTranslations = {
     "$": ["s"],
     "+": ["t"]
 };
-exports.advancedPunctuationTranslations = {
+export const advancedPunctuationTranslations = {
     "/\\": ["a"],
     "/-\\": ["a"],
     "|-\\": ["a"],

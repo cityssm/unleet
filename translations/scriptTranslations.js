@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.scriptTranslations = void 0;
-exports.scriptTranslations = {
+export const scriptTranslations = {
     "ℬ": ["b"],
     "ℂ": ["c"],
     "ℭ": ["c"],
