@@ -1,35 +1,10 @@
 import diacritic from "diacritic";
-import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./translations/translations.js";
-const indiciesOf = (sourceString, searchString) => {
-    const indicies = [];
-    for (let index = 0; index < sourceString.length - searchString.length; index += 1) {
-        if (sourceString.substring(index, searchString.length + index) === searchString) {
-            indicies.push(index);
-        }
-    }
-    return indicies;
-};
-const isLetter = (potentialLetter) => {
-    if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
-        return true;
-    }
-    return false;
-};
-const isPotentialLeet = (potentialLeetString) => {
-    for (const leetSymbol of leetSymbolTranslationKeys) {
-        if (isLetter(leetSymbol)) {
-            continue;
-        }
-        if (potentialLeetString.includes(leetSymbol)) {
-            return true;
-        }
-    }
-    return false;
-};
+import * as utils from "./utils.js";
+import { simpleTranslations, complexTranslations } from "./translations/translations.js";
 const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, complexTranslationKeys) => {
     for (const leetSymbol of complexTranslationKeys) {
         if (lowerCaseLeetString.includes(leetSymbol)) {
-            let matchingIndicies = indiciesOf(lowerCaseLeetString, leetSymbol);
+            let matchingIndicies = utils.indiciesOf(lowerCaseLeetString, leetSymbol);
             if (matchingIndicies.length === 0) {
                 matchingIndicies = [lowerCaseLeetString.indexOf(leetSymbol)];
             }
@@ -46,7 +21,7 @@ const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, comp
             }
         }
     }
-    if (!isPotentialLeet(lowerCaseLeetString)) {
+    if (!utils.isPotentialLeet(lowerCaseLeetString)) {
         unleetStrings.add(lowerCaseLeetString);
         return unleetStrings;
     }
@@ -56,7 +31,7 @@ export const unleet = (leetString) => {
     if (leetString === null || leetString === undefined || leetString === "") {
         return [""];
     }
-    let cleanLeetString = (leetString + "").toLowerCase();
+    let cleanLeetString = leetString.toString().toLowerCase();
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
     cleanLeetString = diacritic.clean(cleanLeetString);
@@ -68,5 +43,14 @@ export const unleet = (leetString) => {
     const complexTranslationKeys = Object.keys(complexTranslations).filter(function (leetSymbol) {
         return cleanLeetString.includes(leetSymbol);
     });
-    return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set(), complexTranslationKeys));
+    const cleanLeetStringSplit = cleanLeetString.split(" ");
+    const unleetResults = [];
+    for (const cleanLeetStringPiece of cleanLeetStringSplit) {
+        unleetResults.push(Array.from(unleetRecurse(cleanLeetStringPiece.trim(), new Set(), new Set(), complexTranslationKeys)));
+    }
+    if (unleetResults.length === 1) {
+        return unleetResults[0];
+    }
+    return utils.combineStringArrays(unleetResults);
 };
+export default unleet;

@@ -1,46 +1,6 @@
 import diacritic from "diacritic";
-
-import { leetSymbolTranslationKeys, simpleTranslations, complexTranslations } from "./translations/translations.js";
-
-
-const indiciesOf = (sourceString: string, searchString: string) => {
-
-  const indicies: number[] = [];
-
-  for (let index = 0; index < sourceString.length - searchString.length; index += 1) {
-
-    if (sourceString.substring(index, searchString.length + index) === searchString) {
-      indicies.push(index);
-    }
-  }
-
-  return indicies;
-};
-
-
-const isLetter = (potentialLetter: string) => {
-  if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
-    return true;
-  }
-  return false;
-};
-
-
-const isPotentialLeet = (potentialLeetString: string) => {
-
-  for (const leetSymbol of leetSymbolTranslationKeys) {
-
-    if (isLetter(leetSymbol)) {
-      continue;
-    }
-
-    if (potentialLeetString.includes(leetSymbol)) {
-      return true;
-    }
-  }
-
-  return false;
-};
+import * as utils from "./utils.js";
+import { simpleTranslations, complexTranslations } from "./translations/translations.js";
 
 
 const unleetRecurse = (lowerCaseLeetString: string,
@@ -54,7 +14,7 @@ const unleetRecurse = (lowerCaseLeetString: string,
     // If the current leet symbol is found in the string
     if (lowerCaseLeetString.includes(leetSymbol)) {
 
-      let matchingIndicies = indiciesOf(lowerCaseLeetString, leetSymbol);
+      let matchingIndicies = utils.indiciesOf(lowerCaseLeetString, leetSymbol);
 
       if (matchingIndicies.length === 0) {
         matchingIndicies = [lowerCaseLeetString.indexOf(leetSymbol)];
@@ -81,7 +41,7 @@ const unleetRecurse = (lowerCaseLeetString: string,
   }
 
   // If no leet symbols exist in the string that are able to be translated
-  if (!isPotentialLeet(lowerCaseLeetString)) {
+  if (!utils.isPotentialLeet(lowerCaseLeetString)) {
     unleetStrings.add(lowerCaseLeetString);
     return unleetStrings;
   }
@@ -90,14 +50,14 @@ const unleetRecurse = (lowerCaseLeetString: string,
 };
 
 
-export const unleet = (leetString: string): string[] => {
+export const unleet = (leetString: string | number): string[] => {
 
   if (leetString === null || leetString === undefined || leetString === "") {
     return [""];
   }
 
   // Convert to lower case
-  let cleanLeetString = (leetString + "").toLowerCase();
+  let cleanLeetString = leetString.toString().toLowerCase();
 
   // Remove periods
   cleanLeetString = cleanLeetString.replace(/\./g, " ");
@@ -120,5 +80,20 @@ export const unleet = (leetString: string): string[] => {
     return cleanLeetString.includes(leetSymbol);
   });
 
-  return Array.from(unleetRecurse(cleanLeetString.trim(), new Set(), new Set(), complexTranslationKeys));
+  const cleanLeetStringSplit = cleanLeetString.split(" ");
+
+  const unleetResults: string[][] = [];
+
+  for (const cleanLeetStringPiece of cleanLeetStringSplit) {
+    unleetResults.push(Array.from(unleetRecurse(cleanLeetStringPiece.trim(), new Set(), new Set(), complexTranslationKeys)));
+  }
+
+  if (unleetResults.length === 1) {
+    return unleetResults[0];
+  }
+
+  return utils.combineStringArrays(unleetResults);
 };
+
+
+export default unleet;

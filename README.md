@@ -24,13 +24,13 @@ npm install @cityssm/unleet
 
 ```javascript
 unleet("b@d w0rd");
-= [ "bad word" ]
+// => [ "bad word" ]
 
 unleet("1337 $P33K");
-= [ 'ieet zpeek', 'ieet speek', 'leet zpeek', 'leet speek' ]
+// => [ 'ieet zpeek', 'ieet speek', 'leet zpeek', 'leet speek' ]
 
 unleet("0rg@ni℠");
-= [ 'organizm', 'organism' ]
+// => [ 'organizm', 'organism' ]
 ```
 
 ## Contributing

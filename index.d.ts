@@ -1,1 +1,2 @@
-export declare const unleet: (leetString: string) => string[];
+export declare const unleet: (leetString: string | number) => string[];
+export default unleet;
