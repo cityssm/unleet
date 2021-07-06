@@ -1,6 +1,6 @@
 {
   "name": "@cityssm/unleet",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Removes symbols and character combinations from a text string, and replaces them with the letters they commonly represent.",
   "type": "module",
   "exports": "./index.js",
@@ -41,6 +41,6 @@
     "eslint-plugin-unicorn": "^34.0.1"
   },
   "dependencies": {
-    "diacritic": "0.0.2"
+    "normalize-diacritics": "^2.14.0"
   }
 }

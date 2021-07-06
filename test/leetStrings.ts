@@ -19,7 +19,9 @@ const leetStrings = [
   ["ₙₒₚᵩᵣₛₜᵤᵥ𝓌ₓᵧ𝓏", cleanAlphabetEnd],
   ["ᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ", cleanAlphabetEnd],
   ["Nȹ9r$7u\\/w><yζ", cleanAlphabetEnd],
-  ["ₙₒₚꝘᵣₛₜᵤᵥᾣₓƳɀ", cleanAlphabetEnd]
+  ["ₙₒₚꝘᵣₛₜᵤᵥᾣₓƳɀ", cleanAlphabetEnd],
+
+  ["söme b@d w0rds wíth áccènｔƶ", "some bad words with accents"]
 ];
 
 describe("unleet()", () => {

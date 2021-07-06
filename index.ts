@@ -1,4 +1,4 @@
-import diacritic from "diacritic";
+import { normalizeSync } from "normalize-diacritics";
 import * as utils from "./utils.js";
 import { simpleTranslations, complexTranslations } from "./translations/translations.js";
 
@@ -67,7 +67,7 @@ export const unleet = (leetString: string | number): string[] => {
   cleanLeetString = cleanLeetString.replace(/ +/g, " ");
 
   // Remove accents
-  cleanLeetString = diacritic.clean(cleanLeetString);
+  cleanLeetString = normalizeSync(cleanLeetString);
 
   // Do simple translations
   for (const leetSymbol of Object.keys(simpleTranslations)) {

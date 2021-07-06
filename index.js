@@ -1,4 +1,4 @@
-import diacritic from "diacritic";
+import { normalizeSync } from "normalize-diacritics";
 import * as utils from "./utils.js";
 import { simpleTranslations, complexTranslations } from "./translations/translations.js";
 const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, complexTranslationKeys) => {
@@ -35,7 +35,7 @@ export const unleet = (leetString) => {
     let cleanLeetString = leetString.toString().toLowerCase();
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
-    cleanLeetString = diacritic.clean(cleanLeetString);
+    cleanLeetString = normalizeSync(cleanLeetString);
     for (const leetSymbol of Object.keys(simpleTranslations)) {
         while (cleanLeetString.includes(leetSymbol)) {
             cleanLeetString = cleanLeetString.replace(leetSymbol, simpleTranslations[leetSymbol][0]);
