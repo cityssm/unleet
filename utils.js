@@ -8,7 +8,7 @@ export const isLetter = (potentialLetter) => {
 export const indiciesOf = (sourceString, searchString) => {
     const indicies = [];
     for (let index = 0; index < sourceString.length - searchString.length; index += 1) {
-        if (sourceString.substring(index, searchString.length + index) === searchString) {
+        if (sourceString.slice(index, searchString.length + index) === searchString) {
             indicies.push(index);
         }
     }

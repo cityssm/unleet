@@ -27,8 +27,9 @@ const unleetRecurse = (lowerCaseLeetString: string,
 
         for (const symbolIndex of matchingIndicies) {
 
-          const newString = lowerCaseLeetString.substring(0, symbolIndex) +
-            translation + lowerCaseLeetString.substring(symbolIndex + leetSymbol.length);
+          const newString = lowerCaseLeetString.slice(0, Math.max(0, symbolIndex)) +
+            translation +
+            lowerCaseLeetString.slice(Math.max(0, symbolIndex + leetSymbol.length));
 
           // If the translation has not been seen before
           if (!previousStrings.has(newString)) {
@@ -85,7 +86,7 @@ export const unleet = (leetString: string | number): string[] => {
   const unleetResults: string[][] = [];
 
   for (const cleanLeetStringPiece of cleanLeetStringSplit) {
-    unleetResults.push(Array.from(unleetRecurse(cleanLeetStringPiece.trim(), new Set(), new Set(), complexTranslationKeys)));
+    unleetResults.push([...unleetRecurse(cleanLeetStringPiece.trim(), new Set(), new Set(), complexTranslationKeys)]);
   }
 
   if (unleetResults.length === 1) {

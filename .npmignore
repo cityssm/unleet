@@ -6,7 +6,8 @@ node_modules
 test
 
 .atomignore
-.eslintrc.js
+.eslintignore
+.eslintrc.json
 .gitignore
 .npmignore
 appveyor.yml

@@ -1,6 +1,6 @@
 import * as assert from "assert";
 import { unleet } from "../index.js";
-describe("unleet(exceptions) ", () => {
+describe("unleet(exceptions)", () => {
     it("Returns empty string on null", () => {
         assert.strictEqual(unleet(null).includes(""), true);
     });

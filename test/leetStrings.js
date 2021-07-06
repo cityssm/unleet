@@ -1,5 +1,5 @@
 import * as assert from "assert";
-import unleet from "../index.js";
+import { unleet } from "../index.js";
 const cleanAlphabetStart = "abcdefghijklm";
 const cleanAlphabetEnd = "nopqrstuvwxyz";
 const leetStrings = [

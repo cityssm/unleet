@@ -1,7 +1,7 @@
 import { leetSymbolTranslationKeys } from "./translations/translations.js";
 
 
-export const isLetter = (potentialLetter: string) => {
+export const isLetter = (potentialLetter: string): boolean => {
   if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
     return true;
   }
@@ -9,13 +9,13 @@ export const isLetter = (potentialLetter: string) => {
 };
 
 
-export const indiciesOf = (sourceString: string, searchString: string) => {
+export const indiciesOf = (sourceString: string, searchString: string): number[] => {
 
   const indicies: number[] = [];
 
   for (let index = 0; index < sourceString.length - searchString.length; index += 1) {
 
-    if (sourceString.substring(index, searchString.length + index) === searchString) {
+    if (sourceString.slice(index, searchString.length + index) === searchString) {
       indicies.push(index);
     }
   }
@@ -24,7 +24,7 @@ export const indiciesOf = (sourceString: string, searchString: string) => {
 };
 
 
-export const isPotentialLeet = (potentialLeetString: string) => {
+export const isPotentialLeet = (potentialLeetString: string): boolean => {
 
   for (const leetSymbol of leetSymbolTranslationKeys) {
 
@@ -41,7 +41,7 @@ export const isPotentialLeet = (potentialLeetString: string) => {
 };
 
 
-export const combineStringArrays = (stringArrays: string[][], stringPrefix: string = "", stringPrefixArrayIndex: number = -1): string[] => {
+export const combineStringArrays = (stringArrays: string[][], stringPrefix = "", stringPrefixArrayIndex = -1): string[] => {
 
   if (stringPrefixArrayIndex === stringArrays.length - 1) {
     return [stringPrefix];

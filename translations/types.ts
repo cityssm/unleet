@@ -1,1 +1,1 @@
-export interface LeetSymbolTranslationObject { [symbol: string]: string[] };
+export interface LeetSymbolTranslationObject { [symbol: string]: string[] }
