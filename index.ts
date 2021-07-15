@@ -1,6 +1,7 @@
 import { normalizeSync } from "normalize-diacritics";
 import * as utils from "./utils.js";
-import { simpleTranslations, complexTranslations } from "./translations/translations.js";
+
+import { simpleTranslations, complexTranslations } from "./translations.js";
 
 
 const unleetRecurse = (lowerCaseLeetString: string,

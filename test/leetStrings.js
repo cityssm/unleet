@@ -1,28 +1,22 @@
 import * as assert from "assert";
 import { unleet } from "../index.js";
-const cleanAlphabetStart = "abcdefghijklm";
-const cleanAlphabetEnd = "nopqrstuvwxyz";
+const cleanString = "the quick brown fox jumps over the lazy dog";
 const leetStrings = [
-    ["$@|_||_7 5'|'3 /\\/\\ar!e", "sault ste marie"],
-    ["ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍ", cleanAlphabetStart],
-    ["ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐ", cleanAlphabetStart],
-    ["ₐᵦ𝒸𝒹ₑ𝒻𝓰ₕᵢⱼₖₗₘ", cleanAlphabetStart],
-    ["ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹ", cleanAlphabetStart],
-    ["@8ςƉ3ƒ(_+#!j|<1ℳ", cleanAlphabetStart],
-    ["ₐɃČḒₑḟḡₕᵢⱼₖₗₘ", cleanAlphabetStart],
-    ["ɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ", cleanAlphabetEnd],
-    ["ⁿᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ", cleanAlphabetEnd],
-    ["ₙₒₚᵩᵣₛₜᵤᵥ𝓌ₓᵧ𝓏", cleanAlphabetEnd],
-    ["ᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ", cleanAlphabetEnd],
-    ["Nȹ9r$7u\\/w><yζ", cleanAlphabetEnd],
-    ["ₙₒₚꝘᵣₛₜᵤᵥᾣₓƳɀ", cleanAlphabetEnd],
-    ["söme b@d w0rds wíth áccènｔƶ", "some bad words with accents"]
+    "𝕥𝕙𝕖 𝕢𝕦𝕚𝕔𝕜 𝕓𝕣𝕠𝕨𝕟 𝕗𝕠𝕩 𝕛𝕦𝕞𝕡𝕤 𝕠𝕧𝕖𝕣 𝕥𝕙𝕖 𝕝𝕒𝕫𝕪 𝕕𝕠𝕘",
+    "ₜₕₑ qᵤᵢ𝄴ₖ ᵦᵣₒwₙ 𝆑ₒₓ ⱼᵤₘₚₛ ₒᵥₑᵣ ₜₕₑ ₗₐ𝆎y dₒg"
 ];
 describe("unleet()", () => {
     for (const testString of leetStrings) {
-        it("Translates \"" + testString[0] + "\" to \"" + testString[1] + "\"", () => {
-            const results = unleet(testString[0]);
-            assert.ok(results.includes(testString[1]));
+        it("Translates \"" + testString + "\"", () => {
+            const results = unleet(testString);
+            const stringFound = results.includes(cleanString);
+            if (!stringFound) {
+                console.log(results);
+                assert.fail();
+            }
+            else {
+                assert.ok(true);
+            }
         });
     }
 });

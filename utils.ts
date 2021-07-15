@@ -1,4 +1,4 @@
-import { leetSymbolTranslationKeys } from "./translations/translations.js";
+import { translationSymbols } from "./translations.js";
 
 
 export const isLetter = (potentialLetter: string): boolean => {
@@ -26,7 +26,7 @@ export const indiciesOf = (sourceString: string, searchString: string): number[]
 
 export const isPotentialLeet = (potentialLeetString: string): boolean => {
 
-  for (const leetSymbol of leetSymbolTranslationKeys) {
+  for (const leetSymbol of translationSymbols) {
 
     if (isLetter(leetSymbol)) {
       continue;
@@ -41,22 +41,23 @@ export const isPotentialLeet = (potentialLeetString: string): boolean => {
 };
 
 
-export const combineStringArrays = (stringArrays: string[][], stringPrefix = "", stringPrefixArrayIndex = -1): string[] => {
+export const combineStringArrays = (stringArrays: string[][], stringPrefix = ""): string[] => {
 
-  if (stringPrefixArrayIndex === stringArrays.length - 1) {
+  if (stringArrays.length === 0) {
     return [stringPrefix];
   }
 
+  const prefixArray = stringArrays[0];
+
+  const suffixArrays = stringArrays.slice(1);
+
   const results: string[] = [];
 
-  for (let stringArrayIndex = stringPrefixArrayIndex + 1; stringArrayIndex < stringArrays.length; stringArrayIndex += 1) {
+  for (const newPrefixPiece of prefixArray) {
 
-    for (const newPrefixPiece of stringArrays[stringArrayIndex]) {
+    const newPrefix = (stringPrefix + " " + newPrefixPiece).trim();
 
-      const newPrefix = (stringPrefix + " " + newPrefixPiece).trim();
-
-      results.push(...combineStringArrays(stringArrays, newPrefix, stringArrayIndex));
-    }
+    results.push(...combineStringArrays(suffixArrays, newPrefix));
   }
 
   return results;

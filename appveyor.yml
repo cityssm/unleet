@@ -23,6 +23,7 @@ before_test:
   - sh: chmod +x ./codeclimate-test-reporter
 
 test_script:
+  - npm run build
   - c8 --reporter=lcov mocha --timeout 30000
 
 after_test:
