@@ -1,6 +1,6 @@
 {
   "name": "@cityssm/unleet",
-  "version": "2.4.0",
+  "version": "2.3.0",
   "description": "Removes symbols and character combinations from a text string, and replaces them with the letters they commonly represent.",
   "type": "module",
   "exports": "./index.js",
