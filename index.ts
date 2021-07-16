@@ -64,6 +64,9 @@ export const unleet = (leetString: string | number): string[] => {
   // Remove periods
   cleanLeetString = cleanLeetString.replace(/\./g, " ");
 
+  // Replace all space characters with the normal space character
+  cleanLeetString = cleanLeetString.replace(utils.whitespaceCharactersRegex, " ");
+
   // Remove multiple spaces
   cleanLeetString = cleanLeetString.replace(/ +/g, " ");
 

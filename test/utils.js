@@ -1,7 +1,7 @@
 import * as assert from "assert";
 import { combineStringArrays } from "../utils.js";
 describe("utils", () => {
-    it("combines array", () => {
+    it("Combines array", () => {
         const arrayToCombine = [
             ['sault'],
             ['ste', "sainte"],

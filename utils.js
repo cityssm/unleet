@@ -1,4 +1,12 @@
 import { translationSymbols } from "./translations.js";
+const whitespaceCharactersList = [
+    " ",
+    String.fromCharCode(160),
+    String.fromCharCode(8201),
+    String.fromCharCode(8194),
+    String.fromCharCode(8195)
+];
+export const whitespaceCharactersRegex = new RegExp("[" + whitespaceCharactersList.join("") + "]", "g");
 export const isLetter = (potentialLetter) => {
     if ("abcdefghijklmnopqrstuvwxyz".includes(potentialLetter)) {
         return true;

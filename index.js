@@ -34,6 +34,7 @@ export const unleet = (leetString) => {
     }
     let cleanLeetString = leetString.toString().toLowerCase();
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
+    cleanLeetString = cleanLeetString.replace(utils.whitespaceCharactersRegex, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
     cleanLeetString = normalizeSync(cleanLeetString);
     for (const leetSymbol of Object.keys(simpleTranslations)) {
