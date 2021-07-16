@@ -51,24 +51,22 @@ export const isPotentialLeet = (potentialLeetString: string): boolean => {
 };
 
 
-export const combineStringArrays = (stringArrays: string[][], stringPrefix = ""): string[] => {
+export const combineStringArrays = (stringArrays: string[][]): string[] => {
 
-  if (stringArrays.length === 0) {
-    return [stringPrefix];
+  if (stringArrays.length <= 1) {
+    return stringArrays[0];
   }
 
-  const prefixArray = stringArrays[0];
+  const array1 = stringArrays[0];
+  const array2 = stringArrays[1];
 
-  const suffixArrays = stringArrays.slice(1);
+  const newArray: string[] = [];
 
-  const results: string[] = [];
-
-  for (const newPrefixPiece of prefixArray) {
-
-    const newPrefix = (stringPrefix + " " + newPrefixPiece).trim();
-
-    results.push(...combineStringArrays(suffixArrays, newPrefix));
+  for (const value1 of array1) {
+    for (const value2 of array2) {
+      newArray.push(value1 + " " +  value2);
+    }
   }
 
-  return results;
+  return combineStringArrays([newArray, ...stringArrays.slice(2)]);
 };

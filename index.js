@@ -47,8 +47,8 @@ export const unleet = (leetString) => {
     });
     const cleanLeetStringSplit = cleanLeetString.split(" ");
     const unleetResults = [];
-    for (const cleanLeetStringPiece of cleanLeetStringSplit) {
-        unleetResults.push([...unleetRecurse(cleanLeetStringPiece.trim(), new Set(), new Set(), complexTranslationKeys)]);
+    for (const [cleanLeetPieceIndex, cleanLeetStringPiece] of cleanLeetStringSplit.entries()) {
+        unleetResults[cleanLeetPieceIndex] = [...unleetRecurse(cleanLeetStringPiece.trim(), new Set(), new Set(), complexTranslationKeys)];
     }
     if (unleetResults.length === 1) {
         return unleetResults[0];

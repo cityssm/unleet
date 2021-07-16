@@ -33,16 +33,17 @@ export const isPotentialLeet = (potentialLeetString) => {
     }
     return false;
 };
-export const combineStringArrays = (stringArrays, stringPrefix = "") => {
-    if (stringArrays.length === 0) {
-        return [stringPrefix];
+export const combineStringArrays = (stringArrays) => {
+    if (stringArrays.length <= 1) {
+        return stringArrays[0];
     }
-    const prefixArray = stringArrays[0];
-    const suffixArrays = stringArrays.slice(1);
-    const results = [];
-    for (const newPrefixPiece of prefixArray) {
-        const newPrefix = (stringPrefix + " " + newPrefixPiece).trim();
-        results.push(...combineStringArrays(suffixArrays, newPrefix));
+    const array1 = stringArrays[0];
+    const array2 = stringArrays[1];
+    const newArray = [];
+    for (const value1 of array1) {
+        for (const value2 of array2) {
+            newArray.push(value1 + " " + value2);
+        }
     }
-    return results;
+    return combineStringArrays([newArray, ...stringArrays.slice(2)]);
 };
