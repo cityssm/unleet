@@ -2,6 +2,7 @@
 .github
 .nyc_output
 coverage
+mappings
 node_modules
 test
 
