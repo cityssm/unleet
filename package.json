@@ -42,6 +42,6 @@
     "eslint-plugin-unicorn": "^34.0.1"
   },
   "dependencies": {
-    "normalize-diacritics": "^2.14.0"
+    "normalize-diacritics": "^3.0.0"
   }
 }
