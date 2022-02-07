@@ -1,4 +1,4 @@
-import { normalizeSync } from "normalize-diacritics";
+import { remove as removeDiacritics } from "diacritics";
 import * as utils from "./utils.js";
 
 import { simpleTranslations, complexTranslations } from "./translations.js";
@@ -58,8 +58,8 @@ export const unleet = (leetString: string | number): string[] => {
     return [""];
   }
 
-  // Convert to lower case
-  let cleanLeetString = leetString.toString().toLowerCase();
+  // Ensure the input is a string
+  let cleanLeetString = leetString.toString();
 
   // Remove periods
   cleanLeetString = cleanLeetString.replace(/\./g, " ");
@@ -71,7 +71,10 @@ export const unleet = (leetString: string | number): string[] => {
   cleanLeetString = cleanLeetString.replace(/ +/g, " ");
 
   // Remove accents
-  cleanLeetString = normalizeSync(cleanLeetString);
+  cleanLeetString = removeDiacritics(cleanLeetString);
+
+  // Convert to lower case
+  cleanLeetString = cleanLeetString.toLowerCase();
 
   // Do simple translations
   for (const leetSymbol of Object.keys(simpleTranslations)) {
