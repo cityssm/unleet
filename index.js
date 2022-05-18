@@ -1,4 +1,4 @@
-import { remove as removeDiacritics } from "diacritics";
+import accents from "remove-accents";
 import * as utils from "./utils.js";
 import { simpleTranslations, complexTranslations } from "./translations.js";
 const unleetRecurse = (lowerCaseLeetString, unleetStrings, previousStrings, complexTranslationKeys) => {
@@ -36,7 +36,7 @@ export const unleet = (leetString) => {
     cleanLeetString = cleanLeetString.replace(/\./g, " ");
     cleanLeetString = cleanLeetString.replace(utils.whitespaceCharactersRegex, " ");
     cleanLeetString = cleanLeetString.replace(/ +/g, " ");
-    cleanLeetString = removeDiacritics(cleanLeetString);
+    cleanLeetString = accents(cleanLeetString);
     cleanLeetString = cleanLeetString.toLowerCase();
     for (const leetSymbol of Object.keys(simpleTranslations)) {
         while (cleanLeetString.includes(leetSymbol)) {

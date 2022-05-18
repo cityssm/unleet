@@ -1,5 +1,5 @@
-import * as fs from "fs";
-import { fileURLToPath } from "url";
+import * as fs from "node:fs";
+import { fileURLToPath } from "node:url";
 
 type Translations = { [symbol: string]: string[] };
 

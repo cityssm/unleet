@@ -3,10 +3,10 @@ import { translationSymbols } from "./translations.js";
 
 const whitespaceCharactersList = [
   " ",
-  String.fromCharCode(160),
-  String.fromCharCode(8201),
-  String.fromCharCode(8194),
-  String.fromCharCode(8195)
+  String.fromCodePoint(160),
+  String.fromCodePoint(8201),
+  String.fromCodePoint(8194),
+  String.fromCodePoint(8195)
 ];
 export const whitespaceCharactersRegex = new RegExp("[" + whitespaceCharactersList.join("") + "]", "g");
 

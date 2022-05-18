@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import * as fs from "node:fs";
 import { mappings } from "./mappings.js";
 const translations = {};
 for (const letter of Object.keys(mappings)) {

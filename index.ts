@@ -1,4 +1,4 @@
-import { remove as removeDiacritics } from "diacritics";
+import accents from "remove-accents";
 import * as utils from "./utils.js";
 
 import { simpleTranslations, complexTranslations } from "./translations.js";
@@ -71,7 +71,7 @@ export const unleet = (leetString: string | number): string[] => {
   cleanLeetString = cleanLeetString.replace(/ +/g, " ");
 
   // Remove accents
-  cleanLeetString = removeDiacritics(cleanLeetString);
+  cleanLeetString = accents(cleanLeetString);
 
   // Convert to lower case
   cleanLeetString = cleanLeetString.toLowerCase();

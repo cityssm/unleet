@@ -28,6 +28,8 @@ npm install @cityssm/unleet
 ## Usage
 
 ```javascript
+import unleet from "@cityssm/unleet";
+
 unleet("b@d w0rd");
 // => [ "bad word" ]
 
